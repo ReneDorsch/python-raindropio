@@ -242,6 +242,7 @@ class Raindrop(DictModel):
         html: Optional[str] = None,
         excerpt: Optional[str] = None,
         title: Optional[str] = None,
+        note: Optional[str] = None
     ) -> Raindrop:
 
         args: Dict[str, Any] = {
@@ -274,6 +275,8 @@ class Raindrop(DictModel):
             args["html"] = html
         if excerpt is not None:
             args["excerpt"] = excerpt
+        if note is not None:
+            args["note"] = note
         if title is not None:
             args["title"] = title
 
@@ -300,6 +303,7 @@ class Raindrop(DictModel):
         excerpt: Optional[str] = None,
         title: Optional[str] = None,
         link: Optional[str] = None,
+        note: Optional[str] = None,
     ) -> Raindrop:
 
         args: Dict[str, Any] = {}
@@ -334,6 +338,8 @@ class Raindrop(DictModel):
             args["title"] = title
         if link is not None:
             args["link"] = link
+        if note is not None:
+            args["note"] = note
 
         URL = f"https://api.raindrop.io/rest/v1/raindrop/{id}"
         item = api.put(URL, json=args).json()["item"]
